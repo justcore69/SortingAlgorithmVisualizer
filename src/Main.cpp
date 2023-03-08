@@ -11,6 +11,8 @@ const int SCREEN_H = 480;
 
 std::vector<int> vector(SCREEN_W/4);
 
+int iteration = 0;
+
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(SCREEN_W, SCREEN_H), "Sorting Algorithm Visualizer | by @PieceOfSoil");
@@ -25,7 +27,6 @@ int main()
     }
 
     //Main loop
-    int iteration = 0;
     while (window.isOpen())
     {
         sf::Event event;
@@ -55,6 +56,7 @@ void drawGraphLine(sf::RenderWindow& _window, int _pos, int _height) {
     sf::RectangleShape line(sf::Vector2f(4, _height));
     line.setOrigin(sf::Vector2f(0, _height));
     line.setPosition(_pos * 4, SCREEN_H);
+    if (iteration == _pos) line.setFillColor(sf::Color::Red);
 
     _window.draw(line);
 }
